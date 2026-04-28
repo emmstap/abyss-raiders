@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abyss Raiders - Sailor Piece Guild</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), 
+    url('https://tr.rbxcdn.com/180DAY-0a0b9f5f7f1c7c3f2b0a0b6b6f0f8f2e/768/432/Image/Webp/noFilter');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* NAV */
+.nav {
+    position: fixed;
+    top: 0;
+    right: 15px;
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    z-index: 1000;
+}
+
+.rules-btn, .values-btn {
+    background: #00ffc3;
+    color: black;
+    padding: 10px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* MODAL */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: #111;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 850px;
+    max-height: 80vh;
+    overflow-y: auto;
+    border: 1px solid rgba(0,255,195,0.3);
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+    color: #00ffc3;
+    font-size: 18px;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 70px;
+    text-shadow: 0 0 20px #00ffc3;
+}
+
+.btn {
+    margin-top: 20px;
+    padding: 14px 30px;
+    border-radius: 30px;
+    background: #00ffc3;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.card {
+    display: inline-block;
+    background: rgba(0,0,0,0.6);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(0,255,195,0.2);
+    max-width: 700px;
+}
+
+.member-list {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.member {
+    background: rgba(0,0,0,0.6);
+    padding: 15px;
+    border-radius: 15px;
+    width: 180px;
+    border: 1px solid rgba(0,255,195,0.2);
+}
+
+.role {
+    color: #aaa;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV BUTTONS -->
+<div class="nav">
+    <div class="rules-btn" onclick="openRules()">📜 Rules</div>
+    <div class="values-btn" onclick="openValues()">💠 Values</div>
+</div>
+
+<!-- RULES MODAL -->
+<div class="modal" id="rulesModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeRules()">✖</span>
+        <h2>Server Rules</h2>
+        <p><b>Rule No.1</b><br>Be respectful to all members.</p>
+        <p><b>Rule No.2</b><br>No spamming or flooding chat.</p>
+        <p><b>Rule No.3</b><br>No NSFW or inappropriate content.</p>
+        <p><b>Rule No.4</b><br>No bullying or harassment.</p>
+        <p><b>Rule No.5</b><br>Respect privacy of members.</p>
+        <p><b>Rule No.6</b><br>Follow Discord Terms of Service.</p>
+        <p><b>Rule No.7</b><br>No advertising without permission.</p>
+        <p><b>Rule No.8</b><br>Use appropriate language.</p>
+        <p><b>Rule No.9</b><br>Use correct channels.</p>
+    </div>
+</div>
+
+<!-- VALUES MODAL -->
+<div class="modal" id="valuesModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeValues()">✖</span>
+        <h2>💠 Values & Prices</h2>
+
+        <p><b>🔥 SETS</b><br>
+Ragna Set — 2,500,000 – 3,100,000 CRR<br>
+Madoka Set — 1,350,000 – 1,650,000 CRR<br>
+Cosmic Being Set — 95,000 – 120,000 CRR<br>
+Frieren Set — 45,000 – 55,000 CRR<br>
+The World Full Set — 6,700 – 8,500 CRR<br>
+The World Spec Set — 5,100 – 6,200 CRR<br>
+Madara Set — 4,600 CRR<br>
+Aizen Set — 322 CRR<br>
+Rimuru Set — 376 CRR<br>
+Cid Set — 300 CRR<br>
+Gilgamesh Set — 1,000 CRR<br>
+Anos Set — 525 CRR<br>
+Saber V2 Set — 800 CRR<br>
+Sukuna V2 Set — 791 CRR<br>
+Aizen V2 Set — 1,045 CRR<br>
+Esdeath Set — 1,187 CRR</p>
+
+<p><b>🎮 GAMEPASSES</b><br>
+2x Drop — 720,000 – 880,000 CRR<br>
+2x Luck — 630,000 – 770,000 CRR<br>
+2x Gems — 180,000 – 220,000 CRR<br>
+2x EXP — 13,000 – 27,000 CRR<br>
+2x Money — 11,000 – 24,000 CRR</p>
+
+<p><b>⚔️ SWORDS</b><br>
+Shadow Monarch — 100,000 CRR<br>
+Atomic — 90,000 CRR<br>
+Abyssal Empress — 80,000 CRR<br>
+Yamato — 70,000 CRR</p>
+
+<p><b>🧬 SPECS / MELEE</b><br>
+Moon Slayer — 95,000 CRR<br>
+Strongest Shinobi — 90,000 CRR<br>
+Blessed Maiden — 88,000 CRR<br>
+Anos Spec — 60,000 CRR</p>
+
+<p><b>⭐ BOSS ITEMS</b><br>
+Monster Pulse — 6,000 CRR<br>
+Galaxy Shard — 5,500 CRR<br>
+Star Mark — 4,300 CRR<br>
+Cosmic Essence — 3,500 CRR</p>
+
+<p><b>🧪 MATERIALS</b><br>
+Various rare dungeon drops (value varies)</p>
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>⚓ Abyss Raiders</h1>
+    <p>Elite Sailor Piece Guild focused on grinding, teamwork, and raids.</p>
+    <a class="btn" href="https://discord.gg/KG57cGjNv">Join Our Discord</a>
+</div>
+
+<!-- DISCORD -->
+<div class="section">
+    <h2>💬 Our Discord Server</h2>
+    <div class="card">
+        <p>Our Discord is the heart of Abyss Raiders. We organize dungeon runs, help beginners, and build strong teams for Sailor Piece progression.</p>
+        <p>Join to find active players and grow stronger together in raids and events.</p>
+    </div>
+</div>
+
+<!-- MEMBERS -->
+<div class="section">
+    <h2>👥 Guild Members</h2>
+    <div class="member-list">
+        <div class="member">👑 Nikolozi<br><span class="role">Owner</span></div>
+        <div class="member">⚔ Gontatsu<br><span class="role">Co-Owner</span></div>
+        <div class="member">⚔ Emms<br><span class="role">Staff</span></div>
+    </div>
+</div>
+
+<footer>
+🌊 Abyss Raiders • Sailor Piece Guild
+</footer>
+
+<script>
+function openRules(){document.getElementById('rulesModal').style.display='flex'}
+function closeRules(){document.getElementById('rulesModal').style.display='none'}
+function openValues(){document.getElementById('valuesModal').style.display='flex'}
+function closeValues(){document.getElementById('valuesModal').style.display='none'}
+</script>
+
+</body>
+</html>
